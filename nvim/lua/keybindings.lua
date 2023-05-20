@@ -21,6 +21,9 @@ local map = vim.api.nvim_set_keymap
 --跳转到入口文件
 map("n", "<leader>rc", ":e $MYVIMRC<CR>", opt)
 
+--快速退出插入模式
+map("i", "jj", "<Esc>", opt)
+
 -- 命令行下 Ctrl+j/k  上一个下一个
 map("c", "<C-j>", "<C-n>", { noremap = false })
 map("c", "<C-k>", "<C-p>", { noremap = false })
@@ -94,3 +97,55 @@ map("t", "<leader>j", [[ <C-\><C-N><C-w>j ]], opt)
 map("t", "<leader>k", [[ <C-\><C-N><C-w>k ]], opt)
 map("t", "<leader>l", [[ <C-\><C-N><C-w>l ]], opt)
 --------------------------------------------------------------------
+-- 插件快捷键
+local pluginKeys = {}
+
+-- nvim-tree
+map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
+-- 列表快捷键
+pluginKeys.nvimTreeList = { -- 打开文件或文件夹
+  { key = { "o", "<2-LeftMouse>" }, action = "edit" },
+  { key = "<CR>", action = "system_open" },
+  -- v分屏打开文件
+  { key = "v", action = "vsplit" },
+  -- h分屏打开文件
+  { key = "h", action = "split" },
+  -- Ignore (node_modules)
+  { key = "i", action = "toggle_ignored" },
+  -- Hide (dotfiles)
+  { key = ".", action = "toggle_dotfiles" },
+  { key = "R", action = "refresh" },
+  -- 文件操作
+  { key = "a", action = "create" },
+  { key = "d", action = "remove" },
+  { key = "r", action = "rename" },
+  { key = "x", action = "cut" },
+  { key = "c", action = "copy" },
+  { key = "p", action = "paste" },
+  { key = "y", action = "copy_name" },
+  { key = "Y", action = "copy_path" },
+  { key = "gy", action = "copy_absolute_path" },
+  { key = "I", action = "toggle_file_info" },
+  { key = "n", action = "tabnew" },
+  -- 进入下一级
+  { key = { "]" }, action = "cd" },
+  -- 进入上一级
+  { key = { "[" }, action = "dir_up" },
+}
+
+-- bufferline
+-- 左右Tab切换
+map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
+map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
+-- "moll/vim-bbye" 关闭当前 buffer
+map("n", "<leader>bc", ":Bdelete!<CR>", opt)
+map("n", "<C-w>", ":Bdelete!<CR>", opt)
+-- 关闭左/右侧标签页
+map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
+map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
+-- 关闭其他标签页
+map("n", "<leader>bo", ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>", opt)
+-- 关闭选中标签页
+map("n", "<leader>bp", ":BufferLinePickClose<CR>", opt)
+
+return pluginKeys
