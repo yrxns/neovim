@@ -27,3 +27,11 @@
 检查能否正常显示小图标
 
 [cheat-sheet](https://www.nerdfonts.com/cheat-sheet)
+
+
+### 安装 Packer.nvim 插件管理器
+
+[官网](https://github.com/wbthomason/packer.nvim)
+
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
