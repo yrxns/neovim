@@ -4,7 +4,7 @@
 
 下载 hack 字体压缩包
 
-    wget https://github.com/yanoasis/nerd-fonts/releases/download/v3.0.1/Hack.tar.xz
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/Hack.tar.xz
 
 安装 hack 字体
 
